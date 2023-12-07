@@ -1,0 +1,43 @@
+package javaBasic.ch04.sec01;
+
+import java.util.Scanner;
+
+public class 복습문제 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub	
+	/*Scanner sc = new Scanner(System.in);
+	System.out.print("문자를 입력해주세요");
+	
+	Scanner sc = new Scanner(System.in);
+	System.out.print("문자를 입력해주세요");
+	String word = sc.next();
+	if ( word.equals("F") || word.equals("f") ){ System.out.println();
+	System.out.println(word); 
+	
+	} */
+	//입력을 받았다
+	Scanner sc = new Scanner(System.in);
+	System.out.println("--- 화씨를 섭씨로, 섭씨르 화씨로 바꾸기 ---");
+	System.out.println(" 문자를 입력하세요? (C,F) ");
+	String word = sc.next();
+	System.out.println(" 바꾸려는 온도를 입력하세요.");
+	int temperature = sc.nextInt();
+	//문자가 "C"인지 "F"인지 판단하기
+	double result= 0.0;
+	//섭씨르 화씨로 고치기
+	if ( word.equals("C") || word.equals("c") ){
+		result = (9.0/5.0)*temperature + 32;}
+	//화씨르 섭씨로 고치기
+	else if( word.equals("F") || word.equals("f") ){ 
+		result = (5.0/9.0)*(temperature - 32);}
+    //4단계 결과 출력하기
+    System.out.println( "정답은 " + result );
+	
+	
+	
+	
+	
+	
+	
+}}

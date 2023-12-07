@@ -1,0 +1,56 @@
+package ch02.sec09;
+
+import java.util.Scanner;
+
+public class 산술연산자 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+        
+    Scanner sc = new Scanner(System.in); //키보드로 글자 입력하는 클래스
+    
+//    int kor = sc.nextInt();
+//    System.out.println( kor );
+//    
+//    double rate = sc.nextDouble();
+//    System.out.println( rate );
+//    
+//    boolean ox = sc.nextBoolean();
+//    System.out.println(ox);
+//    
+//    String name = sc.nextLine();
+//    System.out.println(name);
+//    
+//    String name1 = sc.next();
+//    System.out.println( name1 );
+    
+    
+    
+//    이름은?
+//    국어점수는?
+//    영어점수는?
+//    수학점수는?
+    
+//    출력
+//    홍길동 100 80 90 
+    
+    System.out.print("이름은? ");
+    String name = sc.next();
+    System.out.println(name);
+    
+    System.out.print("국어점수는? ");
+    int korea = sc.nextInt();
+    System.out.println(korea);
+    
+    System.out.print("영어점수는? ");
+    int english = sc.nextInt();
+    System.out.println(english);
+    
+    System.out.print("수학점수는? ");
+    int math = sc.nextInt();
+    System.out.println(math);
+    
+    System.out.println( name + " " + korea + " " + english + " " + math );
+	}
+
+}

@@ -1,0 +1,35 @@
+package javaBasic2.ch05.sec03;
+
+public class 이차원배열 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+   int[][] intArr1 = {{1,2},{2,3},{3,4}}; 
+   //[][]는 2차원이라고 생각하고 
+   //12
+   //23
+   //34
+   String[][] strArr1 = {{"a","b","c"},{"d","e","f"}};
+   boolean [][] boolArr1 = {{false,true},{false,true},{true,false},{true,true}};
+   
+  //2차원배열의 값을 출력하기 - 4뽑기
+   System.out.println(intArr1[2][1]);
+   //"e"를 출력하ㅔㅅ요
+   System.out.println(strArr1[1][1]);
+   System.out.println(boolArr1[3][0]);
+   
+   
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+
+}

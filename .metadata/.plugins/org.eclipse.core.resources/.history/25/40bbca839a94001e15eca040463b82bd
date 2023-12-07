@@ -1,0 +1,33 @@
+package javaBasic2.ch05.sec03;
+
+public class 문자열추출 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+    String title = "자바프로그램밍";
+    String title2 = new String("자바프로그램밍");
+    
+    System.out.println(title2.length());
+    System.out.println(title2.charAt(1));
+    //밍 출력하기
+    System.out.println(title2.charAt(6));    
+    title2 = title2.replace("자바", "java");
+    System.out.println(title2);
+    
+    title2 = title2.substring(0);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+	}
+
+}

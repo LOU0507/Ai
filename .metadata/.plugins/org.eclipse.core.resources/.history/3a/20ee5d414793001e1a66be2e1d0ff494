@@ -1,0 +1,74 @@
+package javaBasic.ch04.sec01;
+
+public class While문 {
+
+	public static void main(String[] args) {
+	  // 반복문
+      // 형식 While(조건) {참이면 수행할 문장}
+      // 1~100 출력하기
+	  // 숫자변수 만들어 1출력하기 -> 변수 +1 -> 출력 -> 출력변수 +1 
+
+/*		int number =1; //반복문은 반복이 아니란 가정하에 공식을 세우고 그 공식 속에서 반복적을 나오는 계산식을 반복해준다
+	 System.out.println(number);
+     number++;
+	 System.out.println(number);
+ 
+	 while ( number<100) {
+	     number++;
+		 System.out.println(number);
+	 }
+		
+	// 10 20 30 40 50 ..100	 //반복문은 반복이 아니란 가정하에 공식을 세우고 그 공식 속에서 반복적을 나오는 계산식을 반복해준다
+	 int number2 =10;
+	 while (number2 < 100) {
+		 System.out.println(number2);	
+	     number2 += 10;} 
+
+	// 100 90 80 70 60 ---- -10 -20 	
+	 int number3 = 100; //반복문은 반복이 아니란 가정하에 공식을 세우고 그 공식 속에서 반복적을 나오는 계산식을 반복해준다
+	 while (number3 >= -20) {
+		 System.out.println(number3);	
+	     number3 -= 10;}  
+	 
+	// 1~20까지 출력해기 
+	 int number4 = 0; //반복문은 반복이 아니란 가정하에 공식을 세우고 그 공식 속에서 반복적을 나오는 계산식을 반복해준다
+	 while (number4 < 20) {number4++;
+	 if (number4%5 == 0) {System.out.println(number4); } //continue 만나면 반복문의 밑으로 가서 다시 믿으로가서 다시 반복문을 넘어간다. 반복문은 계속하더라도 문장은 건너 뛰어라
+	 else {continue;}} 
+	 
+	 // 1~100까지 합계 답은 5050이다.
+	 int number5 = 1;
+	 int sum = 0;
+	 while (number5 < 100) {
+	 sum = sum + number5;
+     System.out.println(number5+ " "+ sum);
+     number5++;
+	 }
+	 
+	 //1~100까지 중에 합계가 3000이 넘우면 하고 숫자
+	 int number6 = 1;
+	 int sum2 = 0;
+	 while (number6 <= 100) {
+	 sum2 += number6;
+	 if (sum2 >= 3000)break;
+	 number6++;
+	 }
+	 */
+		
+		
+	 // 1~100
+	 // 1 2 3 4  5 6
+	 // 1 3 6 10 15 21
+		
+	int number7 = 0;
+	int sum3 = 0;
+	while ( number7 <= 100) {
+		sum3 += number7;
+		number7++;
+		System.out.println(number7 + " "+sum3);
+	}
+		
+		
+	 
+	 
+	}}

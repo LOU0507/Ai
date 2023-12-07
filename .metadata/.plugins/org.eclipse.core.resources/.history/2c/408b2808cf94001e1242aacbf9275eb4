@@ -1,0 +1,32 @@
+package javaBasic3;
+
+public class Teacher {
+
+	String 코드;
+	String 이름;
+	String 전공;
+	int 급여;
+	String 구분;
+	int 시수;
+	
+	
+	int[] 성적처리하기() { //점수가 정수열배열로 리턴
+		return null;
+	}
+	String[] 레포트검사하기() { //점수가 문자열배열로 리턴
+		return null;
+	}
+	void 수업하기() {
+		
+	}
+	void 입력하기() {
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+}

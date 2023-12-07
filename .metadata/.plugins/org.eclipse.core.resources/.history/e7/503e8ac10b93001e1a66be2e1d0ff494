@@ -1,0 +1,21 @@
+package javaBasic.ch03.sec01;
+
+public class 변수복습 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+    string verhicleName1 = "싼타페":
+  	string verhicleName2 = "코란다";
+    string totalVehicleValue1 = "35,000,000";
+    string totalVehicleValue2 = "24,000,000";
+    string deliveryMoney1 = "15,000,000";
+    string deliveryMoney2 = "5,000,000";
+    string installmentPrincipal = "20,000,000";
+    string installmentPrincipa2 = "19,000,000";
+    string repaymentPeriod1 = "36";
+    string repaymentPeriod2 = "24";
+    string monthlyWages1 = "555,555.56";
+    string monthlyWages2 = "";
+	}
+
+}
