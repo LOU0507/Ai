@@ -1,0 +1,32 @@
+package javaBasic3.ch06.sec10;
+
+public class CarExample {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+   Car myCar = new Car();
+   
+   System.out.println("회사명: "+ myCar.company);
+   System.out.println("모델명: "+ myCar.model);
+   System.out.println("색깔: "+ myCar.color);  
+   System.out.println("최고속도: "+ myCar.maxSpeed);
+   System.out.println("현재속도: "+ myCar.speed);
+   
+   myCar.speed = 60;
+   System.out.println("수정된 속도: "+myCar.speed);
+   
+   //생성자로 필드에 값을 넣기
+   Car sCar =  new Car("삼성자동차","sm3","흰색",370,0);
+
+   System.out.println("회사명: "+ sCar.company);
+   System.out.println("모델명: "+ sCar.model);
+   System.out.println("색깔: "+ sCar.color);  
+   System.out.println("최고속도: "+ sCar.maxSpeed);
+   System.out.println("현재속도: "+ sCar.speed);
+   
+   sCar.speed = 100;
+   System.out.println("삼성 자동차 수정된 속도: "+sCar.speed);
+		   
+	}
+
+}
