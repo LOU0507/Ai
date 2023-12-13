@@ -45,5 +45,5 @@ name = "홍지영"
 a=10
 b=20
 print (name, a, b, a-b, 100, sep="")
-
-
+# page76 null이란 값이 없는 것
+print("문자열에는 문자 앞 뒤에 쌍따옴표(\")를 \n 붙인다")

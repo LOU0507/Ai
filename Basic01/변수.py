@@ -35,6 +35,6 @@ yearno = int(year)+3
 print(yearno,"년")
 #8
 month = 48960
-pre = 25
+pre = 236
 total = month*pre
 print( "총 납입금액은 ",total,"원 입니다.")
