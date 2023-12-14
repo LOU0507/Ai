@@ -24,7 +24,6 @@
     <fullyQualifiedTypeName name="java.lang.Process"/>
     <fullyQualifiedTypeName name="javaBasic4.ch07.sec07.A"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="javaBasic4.ch07.sec12.Promotion4Ex"/>
     <fullyQualifiedTypeName name="javaBasic4.ch07.sec13.Tire"/>
     <fullyQualifiedTypeName name="javaBasic4.ch07.sec13.HankookTire"/>
@@ -33,4 +32,23 @@
     <fullyQualifiedTypeName name="javaBasic4.ch07.sec13.Oracle"/>
     <fullyQualifiedTypeName name="javaBasic4.ch07.sec13.mySQL"/>
     <fullyQualifiedTypeName name="javaBasic4.ch07.sec13.MongoDB"/>
+    <fullyQualifiedTypeName name="javaBasic4.ch07.sec14.DriverExample"/>
+    <fullyQualifiedTypeName name="javaBasic4.ch07.sec14.Driver"/>
+    <fullyQualifiedTypeName name="javaBasic4.ch07.sec14.Texi"/>
+    <fullyQualifiedTypeName name="javaBasic4.ch07.sec14.Vehicle"/>
+    <fullyQualifiedTypeName name="javaBasic4.ch07.sec15.Phone"/>
+    <fullyQualifiedTypeName name="javaBasic4.ch07.sec15.SmartPhone"/>
+    <fullyQualifiedTypeName name="javaBasic4.ch07.sec15.iPhone"/>
+    <fullyQualifiedTypeName name="javaBasic4.ch07.sec16.Activity"/>
+    <fullyQualifiedTypeName name="javaBasic4.ch07.sec16.Machine"/>
+    <fullyQualifiedTypeName name="javaBasic4.ch07.sec16.MainActivity"/>
+    <fullyQualifiedTypeName name="javaBasic5.ch08.sec02.Television"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="javaBasic5.ch08.sec02.SmartPhone"/>
+    <fullyQualifiedTypeName name="javaBasic5.ch08.sec02.RemoteControl"/>
+    <fullyQualifiedTypeName name="javaBasic5.ch08.sec03.Vehicle"/>
+    <fullyQualifiedTypeName name="javaBasic5.ch08.sec03.Bus"/>
+    <fullyQualifiedTypeName name="javaBasic5.ch08.sec03.Taxi"/>
+    <fullyQualifiedTypeName name="javaBasic5.ch08.sec03.Train"/>
+    <fullyQualifiedTypeName name="javaBasic5.ch08.sec03.CarRun"/>
 </qualifiedTypeNameHistroy>
