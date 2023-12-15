@@ -18,7 +18,6 @@ a1 = int(input("답은?"))
 result = "정답입니다."
 tryno = 0
 while a1 != thinknumber :   #정답을 찾을때까지 
-  tryno += 1
   if a1 < thinknumber :
     result = "답보다 큰 수입니다."
     tryno += 1

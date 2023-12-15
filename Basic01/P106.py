@@ -3,9 +3,10 @@ ticket = 2000
 from datetime import datetime
 birth = int(input("태어난 년도를 입력하세요 > "))
 year = datetime.now().year 
+
 if birth > year :
-  print("올해는 2023년입니다.")
-  print("입력이 잘 못 되었습니다.")
+  print(f"올해는 {year}년입니다.")
+  print("입력이 잘못 되었습니다.")
 else :
   age = year - birth + 1
   print (age)
