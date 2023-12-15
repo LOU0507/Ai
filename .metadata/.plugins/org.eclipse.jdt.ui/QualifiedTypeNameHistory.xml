@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.util.Calendar"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
     <fullyQualifiedTypeName name="javaBasic3.ch10.exam01.Calculator"/>
@@ -43,7 +42,6 @@
     <fullyQualifiedTypeName name="javaBasic4.ch07.sec16.Machine"/>
     <fullyQualifiedTypeName name="javaBasic4.ch07.sec16.MainActivity"/>
     <fullyQualifiedTypeName name="javaBasic5.ch08.sec02.Television"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="javaBasic5.ch08.sec02.SmartPhone"/>
     <fullyQualifiedTypeName name="javaBasic5.ch08.sec02.RemoteControl"/>
     <fullyQualifiedTypeName name="javaBasic5.ch08.sec03.Vehicle"/>
@@ -51,4 +49,15 @@
     <fullyQualifiedTypeName name="javaBasic5.ch08.sec03.Taxi"/>
     <fullyQualifiedTypeName name="javaBasic5.ch08.sec03.Train"/>
     <fullyQualifiedTypeName name="javaBasic5.ch08.sec03.CarRun"/>
+    <fullyQualifiedTypeName name="javaBasic5.ch08.sec03.AImpl"/>
+    <fullyQualifiedTypeName name="javaBasic5.ch08.sec03.Driver"/>
+    <fullyQualifiedTypeName name="javaBasic5.ch08.sec03.확인문제9장2번.Driver"/>
+    <fullyQualifiedTypeName name="javaBasic5.ch08.sec03.Remocon"/>
+    <fullyQualifiedTypeName name="javaBasic5.ch08.sec04.Remocon"/>
+    <fullyQualifiedTypeName name="javaBasic5.ch08.sec04.Soundable"/>
+    <fullyQualifiedTypeName name="javaBasic5.ch08.sec03.DateAccessObject"/>
+    <fullyQualifiedTypeName name="javaBasic6.ch09.sec01.A.B"/>
+    <fullyQualifiedTypeName name="javaBasic6.ch09.sec02.AA.BB"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="javaBasic6.ch09.sec03.LocalExample"/>
 </qualifiedTypeNameHistroy>
