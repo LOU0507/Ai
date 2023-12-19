@@ -1,9 +1,0 @@
-package javaBasic3.ch06.sec09;
-
-public class Car {
-
-	String model = "±×·£Àú";
-	int sped = 300;
-	boolean start = true;
-//	Tire tire = new Tire();
-}
