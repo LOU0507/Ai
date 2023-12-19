@@ -139,8 +139,14 @@
 #     total +=1
 # print("홀수의 개수 : %d개 "%total)
 
-for i in range(1,6) :
-  for j in range (1,11) :
-    print ("*",end=" ")
+# for i in range(1,6) :
+#   for j in range (1,11) :
+#     print ("*",end=" ")
+#   print()
+
+for i in range(9,0,-1): 
+  for j in range(9,i,1):
+    print (i,end=" ")
   print()
+
 
