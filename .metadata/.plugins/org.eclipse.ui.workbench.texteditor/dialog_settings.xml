@@ -6,7 +6,10 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
+		<item key="selection" value="hashCode"/>
 		<list key="findhistory">
+			<item value="hashcode"/>
+			<item value="hascode"/>
 		</list>
 		<list key="replacehistory">
 		</list>
