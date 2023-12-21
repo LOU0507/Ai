@@ -7,5 +7,13 @@ print(person)
 
 scores = list(range(80,101,10))
 print(scores)
-sum = sum(scores)
-print(sum)
+sm = sum(scores)
+print(sm)
+
+data = [1,2,8.9,"a","b"]
+sm= sum(data)
+print(sm)
+
+jumsu = list ( range(90,101,1))
+avg = sum(jumsu)/len(jumsu)
+print(avg)
