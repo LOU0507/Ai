@@ -1,0 +1,33 @@
+inventory = {"메로나":[300,20],
+            "비비빅":[400,3],
+            "죠스바":[250,100]}
+
+# print( inventory["메로나"][0],"원",sep="")
+# print( inventory["죠스바"][1],"개",sep="")
+# inventory["월드콘"]=[1500,50]
+# print(inventory)
+# inventory["죠스바"]=[350,100]
+# print(inventory)
+
+# print(len(inventory),"종류")
+
+# for i in inventory :
+#   a = inventory[i][0]*inventory[i][1]
+#   print(f"{i} {inventory[i][0]}원 {inventory[i][1]}개 {a}원")
+
+scores = {"김채린":85,"박수정":98,"함소희":94,"안예린":90,"연수진":93}
+sum = 0
+for key in scores : 
+  sum = sum + scores[key]
+  
+  print("%s : %d"%(key,scores[key]))
+avg = sum/len(scores)
+print("합계 : %d, 평균 : %.2f"%(sum,avg))
+
+admin_ifo = {"id":"admin","password":"12345"}
+inuput_id = input("아이디를 입력하세요: ")
+inuput_pass = input("비밀번호를 입력하세요: ")
+if inuput_id == admin_ifo["id"] and inuput_pass == admin_ifo["password"] :
+  print("정보에 접근 권한이 있습니다.")
+else :
+  print("정보에 접근 권한이 없습니다.")
