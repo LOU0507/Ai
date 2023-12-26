@@ -24,10 +24,7 @@ for key in scores :
 avg = sum/len(scores)
 print("합계 : %d, 평균 : %.2f"%(sum,avg))
 
-admin_ifo = {"id":"admin","password":"12345"}
-inuput_id = input("아이디를 입력하세요: ")
-inuput_pass = input("비밀번호를 입력하세요: ")
-if inuput_id == admin_ifo["id"] and inuput_pass == admin_ifo["password"] :
-  print("정보에 접근 권한이 있습니다.")
-else :
-  print("정보에 접근 권한이 없습니다.")
+words = {"꽃":"flower","나비":"butterfly","학교":"school","자동차":"car"}
+print("영어 단어 맞추기 퀴즈 ")
+for kor in words : 
+  

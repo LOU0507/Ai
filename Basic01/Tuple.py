@@ -12,4 +12,10 @@ animals = ("토끼","거북이","사자","여우")
 print(animals[1:3])
 #바꾸기 1단계 리스트로 바꾸기 2단계 튜플로 바꾸기
 ani_list = list(animals)
-print(type(animals))
+print(type(ani_list))
+ani_list[0] = "돼지"
+print( ani_list )
+animals= tuple(ani_list)
+print(animals)
+
+n = tuple(range(10,21))
