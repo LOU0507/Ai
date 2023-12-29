@@ -23,10 +23,10 @@ public class ObjectStreamEx {
 			ObjectInputStream ois = new ObjectInputStream(bis);
 			//읽어와서
 			Member iM = (Member) ois.readObject();
-			//출
+			//출력해보기
 			System.out.println(iM);
 			
-		} catch (IOException | ClassNotFoundException e) {
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -36,9 +36,13 @@ public class ObjectStreamEx {
 }
 
 class Member implements Serializable {
+	
+	private static final long serialVersionUID = -5413711528933648809L;
+	
 	String id;
 	String name;
 	int age;
+	int point;
 	
 	public Member(String id, String name, int age) {
 		super();
