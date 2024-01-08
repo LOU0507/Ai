@@ -1,0 +1,35 @@
+*{
+  font-family: 'Nanum Gothic', sans-serif;
+}
+html{
+  background-color: cover;
+}
+body {
+  margin: 0;
+}
+#header{
+  z-index: 1;
+  margin: 0 auto;
+  background-color: rgb(255,255,255,0.8);
+  height: 40px;
+  width: 100%;
+  box-shadow: 0,0.6px rgb(115,115,115);
+  position: fixed;
+  top: -1px;
+}
+.mainBarKAKAO{
+  margin: 0 auto;
+  width: 1200px;
+}
+.leftMainBarKAKAO div{
+  float: left;
+  padding: 9px 10px;
+}
+.leftMainBarKAKAO div a {
+  text-decoration: none;
+  font-size: small;
+  color: black;
+}
+.leftMainBarKAKAO div a:hover{
+  opacity: 50%;
+}
