@@ -46,3 +46,60 @@ body {
 .rightMainBar div a:hover{
   opacity: 50%;
 }
+header{
+  position: relative;
+  border-top: 20px solid#CCC;
+  border-bottom: 1px solid #ebb4b4;
+}
+header h1{
+  position: absolute;
+  left : 0px;
+  top: 0px;
+  padding: 0 0 0 26px;
+}
+header h1 a{
+  display: block;
+  width: 100px;
+  height: 70px;
+  background: url(../image/logo.jpg) no-repeat center;
+}
+.hide{
+  overflow: hidden;
+  display: block;
+  position: absolute;
+  border: 0;
+  width: 1px;
+  height: 1px;
+}
+a {
+  text-decoration: none;
+}
+header nav ul{
+  text-align: center;
+  font-size: 0px;
+}
+header nav ul li{
+  display: inline-block;
+}
+header nav ul li a{
+  display: block;
+  padding: 15px 30px 15px 45px;
+  line-height: 69px; 
+  font-size: 15px;
+  color: #000000;
+}
+header .utill{
+  position: absolute;
+  right: 0px;
+  top: 40px;
+}
+header.utill a {
+  display: inline-block;
+  font-size: 10px;
+  color: #2c2929;
+}
+header .utill button{
+  background: url(../image/캐ㅐㅡ1.jpg) no-repeat;
+  width: 30px;
+  height: 30px;
+}
