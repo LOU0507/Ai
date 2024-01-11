@@ -1,0 +1,33 @@
+
+table {
+  width: 800px;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  border-collapse: collapse;
+}
+th,
+td{
+  border-bottom: 1px salmon;
+}
+th:first-child
+th:first-child {
+  border-left: none;
+}
+.o1 {
+  width: 120px;
+  height: 30px;
+}
+.o2 {
+  width: 300px;
+  height: 60px;
+}
+.o3 {
+  width: 200px;
+  height: 170px;
+}
+.o4 {
+  width: 180px;
+  height: 40px;
+}

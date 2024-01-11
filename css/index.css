@@ -70,7 +70,7 @@ header h1 a {
   display: block;
   width: 100px;
   height: 70px;
-  background: url(../imge/logo.png) no-repeat center;
+  background: url(../image/logo.jpg) no-repeat center;
 }
 
 .hide {
@@ -117,5 +117,45 @@ header .utll button {
   height: 30px;
   border: 0px;
   padding: 0 20px;
-  background: url(../imge/button.png) no-repeat center;
+  background: url(../image/캐ㅐㅡ1.jpg) no-repeat center;
 }
+
+table {
+  width: 600px; /*100% 브라우저 전체 크키*/
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  
+  text-align: center;
+  border-collapse: collapse;
+}
+th,
+td{
+  border-bottom: 1px solid #ccc;
+}
+th:first-child
+td:first-child{
+  border-left : none;
+}
+.c1 {
+  width: 100px;
+  height: 80px;
+  vertical-align: middle;
+  text-align: center;
+  padding: 2px;
+}
+.c2 {
+  width: 400px;
+  height: 40px;
+}
+.c3 {
+  width: 100px;
+  height: 40px;
+}
+.c4 {
+  width: 200px;
+  height: 40px;
+  text-align: right;
+}
+
+/*셀에서 안쪽 여백 조정하기*/
