@@ -130,8 +130,8 @@ select ifnull(200,300);
 select ifnull(null, ifnull(null,300));
 
 -- nullif(수식1,수식2)
-select nullif(100,100);
-select nullif(200,100);
+select nullif(100,100); -- true
+select nullif(200,100); -- false
 
 -- case when else end
 set @v1 = 1;
@@ -184,40 +184,8 @@ from usertbl;
 
 select*from usertbl;
 
--- 261 대용량 파일
-create database moviedb;
-use moviedb;
 
-create table movietbl
-  (movie_id int,
-  movie_title varchar(30),
-  movie_director varchar(20),
-  movie_start varchar(20),
-  movie_script longtext,
-  movie_film longblob
-) default charset=utf8mb4;
 
-insert into movietbl values (1, '쉰들러 리스트', '스필버그','리암니슨', 
-				   load_file('D:/a2024/db_study/sourceCode/Movies/Schindler.txt'),
-                   load_file('D:/a2024/db_study/sourceCode/Movies/Schindler.mp4') );
- 
- 
- select*from movietbl;
- show variables like 'max_allowed_packet';
- show variables like 'secure_file_priv';
-
- select*from movietbl;
-drop table movietbl; 
-create table movietbl
-  (movie_id int,
-  movie_title varchar(30),
-  movie_director varchar(20),
-  movie_start varchar(20),
-  movie_script longtext,
-  movie_film longblob
-) default charset=utf8mb4;
-
- 
 select * from buytbl;
 create table if not exists copybuy
   select * from buytbl;
@@ -233,3 +201,214 @@ where
 amount = ( select amount from ( select amount from copybuy order by amount asc limit 1) as t); 
 
 select * from copybuy;
+
+
+
+
+-- 261 대용량 파일
+-- 1 단계 데이터베이스 만들기
+create database moviedb;
+-- 2단계 데이터베이스를 사용한다
+use moviedb;
+-- 3단계 테이블 만들기
+create table movietbl
+  (movie_id int,
+  movie_title varchar(30),
+  movie_director varchar(20),
+  movie_start varchar(20),
+  movie_script longtext,
+  movie_film longblob
+) ;
+
+insert into movietbl values (1, '쉰들러 리스트', '스필버그','리암니슨', 
+				   load_file('D:/ai 윤혜정/study/temp/movies/Schindler.txt'),
+                   load_file('D:/ai 윤혜정/study/temp/movies/Schindler.txt') );
+ 
+ -- 5단계 select문으로 검색한다.
+ select*from movietbl;
+ --  longtext,longblob가 null이 나오는 이유
+ -- 1. 용량이 부족해서
+ show variables like 'max_allowed_packet';
+ -- 2. 경로가 틀려서
+ show variables like 'secure_file_priv';
+-- 환경설정
+
+select*from movietbl;
+drop table movietbl; 
+
+create table movietbl
+  (movie_id int,
+  movie_title varchar(30),
+  movie_director varchar(20),
+  movie_start varchar(20),
+  movie_script longtext,
+  movie_film longblob
+) default charset=utf8mb4;
+
+insert into movietbl values (1, '쉰들러 리스트', '스필버그','리암니슨', 
+				   load_file('D:/ai 윤혜정/study/temp/movies/Schindler.txt'),
+                   load_file('D:/ai 윤혜정/study/temp/movies/Schindler.mp4') );
+
+select * from movietbl ;
+-- 내려받기 데이터베이스 ----> 개인 컴퓨터로 다운로드
+-- 1단계 내릴 것을 확인하기 
+select movie_script from movietbl where movie_id = 1;
+-- 내리기
+select movie_script from movietbl where movie_id = 1
+ into outfile 'D:/ai 윤혜정/study/temp/movies/movie_script_copy.txt'
+ lines terminated by '\\n';
+ 
+-- 동영상 파일 내리기
+-- 1단계 내릴 것을 확인학
+select movie_film from movietbl where movie_id =1 ;
+-- 2단계 내리기
+select  movie_film from movietbl where movie_id =1
+   into outfile 'D:/ai 윤혜정/study/temp/movies/Schindler.mp4';
+ 
+ -- 피벗구현하기
+ use spldb;
+select*from usertbl;
+select*from buytbl;
+
+create table pivotTest
+(
+   uName char(3),
+   season char(2),
+   amount int
+);
+insert into pivotTest values
+('윤종신','봄','15'),('김범수','여름','10'),('윤종신','가을','20'),('김범수','겨울','30'),
+('윤종신','가을','25'),('김범수','여름','5'),('성시경','봄','35'),('윤종신','봄','10');
+select*from pivotTest;
+-- 피벗 : 함수 사용해서 보기 편허게 만들기
+select uName '이름', sum( if ( season='봄',amount,0)) '봄',
+                  sum( if ( season='여름',amount,0) ) '여름',
+                  sum( if ( season='가을',amount,0)) '가을',
+                  sum( if ( season='겨울',amount,0)) '겨울',
+                  sum (amount) '합계'
+from pivotTest group by season;
+
+select json_array (1,'abc',null,true,curtime());
+select json_object ( 'score', 87, 'name', 'hong', 'age', 25);
+select @jsonData =json_object ( 'score', 87, 'name', 'hong', 'age', 25);
+select @jsonData;
+select*from usertbl;
+
+-- 키 userid, addr 값 json을 만들기
+select
+   json_object(userid, addr)
+from usertbl;
+-- 2단계
+select json_object(userid, json_array(mobile1,mobile2))
+   from usertbl;
+-- 외부로 내보내기 json 파일로 만들기
+select 
+      json_object(userid, json_array(mobile1,mobile2))
+from usertbl into outfile 'D:/ai 윤혜정/study/temp/movies/jsonOutPut.json';
+
+select json_valid(@jsonData);
+
+select 
+  if (json_valid(@jsonData)=1,
+    'json 자료다',
+    'json 자료가 아니다');
+
+-- json 자료안에 값을 검색하기
+set @j = "['abc',[{'k':'10'},'def'],[{'x1':'abc1'},{'x2':'abc2'},{'x5':'abc5'}],{'y1':'bcd'}]";
+select 
+   json_search (@j,'all','abc5'); -- 못찾으면 null 반환된다. 찾으면 리스트 위치를 알려준다.
+
+-- json_extract
+
+-- json_insert
+Set @j = '{"a":1,"b":[2,3]}';
+select json_insert(@j,'$.c',10); -- 키가 새것이면 삽입된다
+select json_insert(@j,'$.a',10); -- 키가 이미 있으면 삽인 되지 않느다.   
+select json_insert(@j,'$.b','[2,3,4]');
+
+-- json_replace
+set @j = "{'a':1,'b':[2,3]}'";
+select json_replace(@j,'$.a',10); -- 키가 있으면 수정
+select json_replace(@j,'$.c',10); -- 키가 없으면 아무것도 안하기
+
+-- -------------join
+select*from usertbl;
+select*from buytbl;
+
+select*from usertbl -- 먼저 적힐 것
+ inner join buytbl -- 나중에 적힐 것
+  on usertbl.userID = buytbl.userID -- 두 테이블의 중복사항
+where birthYear between 1970 and 1980 order by usertbl.name limit 3;
+
+-- 5 select*from usertbl -- 먼저 적힐 것
+-- 1  inner join buytbl -- 나중에 적힐 것
+-- 2  on usertbl.userID = buytbl.userID -- 두 테이블의 중복사항
+-- 3  where birthYear 
+-- 4  between 1970 and 1980 
+-- 6  order by usertbl.name 
+-- 7  limit 3;
+
+-- 282
+use spldb;
+create table stdTbl
+( stdName varchar(10) not Null primary key,
+  addr     char(4) not null);
+create table clubTbl
+( clubName varchar(10) not Null primary key,
+  roomNo     char(4) not null);
+create table stdclubTbl
+( num int auto_increment Not null primary key,
+  stdName  varchar(10) not null,
+  clubName varchar(10) not null,
+  foreign key(stdName) references stdtbl(stdName),
+  foreign key(clubName) references stdtbl(clubName));
+  
+insert into stdTbl values ('김범수','경남'),('성시경','서울'),('조용필','경기'),
+                          ('은지원','경북'),('바비킴','서울');
+insert into clubTbl values ('수영','101호'),('바둑','102호'),
+                          ('축구','103호'),('봉사','104호');
+insert into stdclubTbl values (null,'김범수','바둑'),(null,'김범수','축구'),(null,'조용필','축구'),
+                          (null,'은지원','축구'),(null,'은지원','봉사'),(null,'바비킴','봉사');
+					
+                    
+-- 1. 요구사항 학생테이블, 동아리테이블, 학생동아리 테이블을 이용하여 
+-- 학생을 기준으로 학생이름, 지역, 가입한 동아리, 동아리방 보기
+select s.stdName, s.adrr, c.clubNaME, c.roomNo
+from stdTbl s
+ inner join stdclubtbl sc
+ on s.stdName = sc.stdName
+ inner join clubtbl sc
+ on sc.clubName = sc.clubName;
+ 
+-- 2. 요구사항 학생테이블, 동아리테이블, 학생동아리 테이블을 이용하여 
+-- 축구를 선택하신 분의 이름과 지역은?
+select s.stdName, s.adrr, c.clubNaME, c.roomNo
+from stdTbl s
+ inner join stdclubtbl sc
+ on s.stdName = sc.stdName
+ inner join clubtbl sc
+ on sc.clubName = sc.clubName
+where sc.clubName='축구';
+
+-- 3. 요구사항 학생테이블, 동아리테이블, 학생동아리 테이블을 이용하여 
+-- 은지원이 선택한 동아리와 동아리방은?
+
+-- 4. 요구사항 학생테이블, 동아리테이블, 학생동아리 테이블을 이용하여 
+-- 서울 지역에 사는 사람이 선택한 동아리명은?
+select  
+   *
+from stdtbl s
+   left outer join stdclubtbl sc 
+   on s.stdName = sc.stdName 
+   left outer join clubtbl c 
+   on sc.clubName = c.clubName 
+
+union   
+
+select  
+   *
+from stdtbl s
+   left outer join stdclubtbl sc 
+   on s.stdName = sc.stdName 
+   right outer join clubtbl c 
+   on sc.clubName = c.clubName;
