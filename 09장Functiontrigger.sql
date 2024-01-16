@@ -1,6 +1,6 @@
 -- stored procedure program
 -- 설계 --> 인스턴스화 --> 사용
-use sqldb;
+use spldb;
 -- 기본적인 형식
 delimiter $$
 create procedure  userProc()
@@ -385,9 +385,161 @@ update usertbl set addr = '서울' where userId='EJW' ;
 select * from backup_userTbl ;
 
 
+ -- 467
+ -- 삭제가 발생햇을 떄
+ delimiter //
+   create trigger bud
+     after delete
+     on usertbl
+     for each row
+ begin
+   insert into backup_userTbl 
+   values ( OLD.userID, OLD.name, OLD.birthYear, old.addr, 
+			old.mobile1, old.mobile2, old.height, old.mDate,
+			'삭제',curdate(),current_user()) ;
+ end //
+
+delimiter ;
+
+select * from usertbl;
+delete from usertbl where userid = 'YJS';
+ select*from backup_userTbl;
  
+ -- 469page
+ drop trigger if exists usertbl_INSERTTRG;
  
+ delimiter //
+  create trigger usertbl_inserttrg
+     after insert
+     on usertbl
+     for each row
+  begin
+     signal sqlstate '45000'
+         set message_text = '데이터의 입력을 시도헸습니다. 귀하의 정보가 서버에 기록되었습니다.';
+  end //
+  delimiter ;
+  
+  insert into usertbl values ('ABC','에비씨',1977,'서울','011','11111111',181,'2019-12-25','잠재고객');
+select * from usertbl;
+drop trigger uti;
+  
+  -- 471page
+  use spldb;
+  drop trigger if exists usertbl_beforeInserttrg;
+  delimiter //
+  create trigger ubi
+       before insert
+       on userRBL
+       for each row
+	begin
+      if new.birthYear < 1900 then
+        set new.birthYear = 0;
+	  elseif new.birthYear > year(curdate()) then
+	    set new.birthYear = year(curdate());
+	  end if ;
+    end //
+    delimiter ;
+insert into usertbl values ('DDD','디디디',1877,'서울','011','11111111',181,'2019-12-25','잠재고객');  
+insert into usertbl values ('EEE','이이이',2877,'서울','011','11111111',181,'2019-12-25','잠재고객');  
+select * from usertbl;
 
+-- 주소가 ' 평양' 입력되면 '긴찹'
+-- 전화번호가 '999' 입력하면 '010' 바꿔서 입력
+delimiter //
+  create trigger ubi2
+       before insert
+       on usertbl
+       for each row
+	begin
+      if new.addr ='평양' then
+        set new.addr = '외국';
+	  elseif new.mobile1 = '999' then
+	    set new.mobile1 = '010';
+	  end if ;
+    end //
+    delimiter ;
+insert into usertbl values ('FFF','에프에',1877,'평양','011','11111111',181,'2019-12-25','잠재고객');  
+insert into usertbl values ('GGG','지지지',2877,'서울','999','11111111',181,'2019-12-25','잠재고객');  
+select * from usertbl;
 
+-- 생성한 트리거들을 확인하기
+show triggers from spldb;
+-- 트리거 삭제하기
+drop trigger tbl;
 
+-- 다중 트리거
+-- 구매 1 물품테이블 -1 배송테이블 +1
+drop database if exists triggerDb;
+create database if not exists triggerDb;
+use triggerDb;
+-- 구매테이블
+create table orderTbl
+  ( orderNo int auto_increment primary key,
+  userId varchar(5),
+  prodName varchar(5),
+  orderamount int );
+-- 물품테이블
+create table buyTbl
+ ( prodName varchar(5),
+   account int );
+-- 배송테이블
+create table deliverTbl
+  ( deliverNo int auto_increment primary key,
+  prodName varchar(5),
+  account int );
+-- 물품테이블에 물건을 삽입하기
+insert into prodTbl values ('사과',100);
+insert into prodTbl values ('배',100);
+insert into prodTbl values ('귤',100);
 
+select * from prodTbl;
+-- 트리거
+-- 요구사항 구매테이블 삽입되면 물품테이블에서 갯수만큼 차감해서 업데이트 한다.
+delimiter //
+create trigger orderTg
+  after insert
+  on orderTbl
+  for each row
+begin
+  update prodTbl set account = account - new.orderamount where ProdName = nem.ProdName ;
+end //
+delimiter ;
+
+-- 요구사항 물품테이블이 업데이트 뒨 후에 배송테이블에 삽입하기
+delimiter //
+  create trigger prodTg
+  after update 
+  on prodTbl
+  for each row
+begin
+  declare orderAmonut int;
+  set orderAmount = old.account - new.account ; -- 100-95=5
+  insert into deliverTbl values ( null, new.prodName, orderAmount) ;
+end //
+delimiter ;0
+
+select * from ordertbl;
+desc ordertbl;
+insert into ordertbl values (null,'BBK','사과',5) ;
+
+show triggers;
+
+-- 569 14장 지리 정보시스템
+
+DROP DATABASE IF EXISTS GisDB;
+CREATE DATABASE GisDB;
+
+USE GisDB;
+CREATE TABLE StreamTbl (
+   MapNumber CHAR(10),  -- 지도일련번호
+   StreamName CHAR(20),  -- 하천이름
+   Stream GEOMETRY ); -- 공간데이터(하천개체)
+
+INSERT INTO StreamTbl VALUES ( '330000001' ,  '한류천', 
+   ST_GeomFromText('LINESTRING (-10 30, -50 70, 50 70)'));
+INSERT INTO StreamTbl VALUES ( '330000001' ,  '안양천', 
+   ST_GeomFromText('LINESTRING (-50 -70, 30 -10, 70 -10)'));
+INSERT INTO StreamTbl VALUES ('330000002' ,  '일산천', 
+   ST_GeomFromText('LINESTRING (-70 50, -30 -30, 30 -60)'));
+
+select*from streamtbl ;
