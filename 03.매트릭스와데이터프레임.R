@@ -216,3 +216,94 @@ human <- data.frame(name,age,gender,height,student)
 human
 #2
 human.new <- list(name="Mary",age=24,gender="F",height=155,student=TRUE)
+human <- rbind( human, human.new )
+human
+#3
+str(human)
+#dim(human) 행렬의 갯수
+#class(human) 데이터프레임인지 매트릭스인지 알기
+#4
+mean(human$age)
+human['age']
+mean(human$height)
+#5
+colnames(human[-4])
+#6
+table(human$gender)
+
+#파일 불러오기
+air <- read.csv("D:/ai/study/R_study/airquality.csv")
+air
+head(air)
+air['Ozone']
+air2 <- read.csv(file.choose()) # 대화상자로 열어서 파일 불러오기
+head(air2)
+
+#iris에서 Species의 종류가 setosa인 것만 저장하기
+iris.setosa <-  subset(iris, Species=='setosa')
+write.csv(iris.setosa,'irisFileName.csv')
+#         저장할 자료 , 파일명    
+# 첫번째 열에는 열번호가 잇다. 이 부분을 저장에서 제외하고 싶다
+write.csv(iris.setosa,'irisFile1.csv',row.names=F)
+
+
+#문제 4번 
+
+#1
+class(swiss)
+head(swiss)
+#2
+max(swiss$Agriculture)
+subset(swiss,Agriculture == max(swiss$Agriculture))
+rownames(subset(swiss,Agriculture == max(swiss$Agriculture)))
+#3
+swiss[,'Agriculture']
+swiss['Agriculture']
+swiss[2]
+tmp <- swiss[order(swiss$Agriculture,decreasing = T),]
+tmp['Agriculture']
+#4 
+subset(swiss,Catholic>=80)['Agriculture']
+#5
+subset(swiss,Examination<20&Agriculture<50)[c('Examination', 'Agriculture')]
+
+#문제5번
+#형변환 
+st <- data.frame(state.x77)
+#조건으로 검출
+rich_state <- subset(st,st$Income>=5000)[c('Incoem','Population','Area')]
+#엑셀 파일로 저장하기 
+write.csv(rich_state,'d:/ai/study/R_study/rich_state.cvs')
+ds <- read.csv('d:/ai/study/R_study/rich_state.cvs')
+ds
+
+
+#문제6번
+m <- c(10,40,60,20)
+f <- c(21,60,70,30)
+score1 <- cbind(m,f)
+score1
+score <- matrix(c(10,40,60,20,
+                21,60,70,30),
+                nrow=4,ncol=2)
+score
+colnames(score) <- c("male","famale")
+score[2,]
+score[,'famale']
+score[3,2]
+
+#문제7번
+#1
+class(mtcars)
+#2
+dim(mtcars)
+#3
+str(mtcars)
+#4
+
+#5
+max(mtars$mpmpg)
+rowanames(subset(mtcars,mtcars$mpg == max(mtcars$mpg)))
+#6
+subset(mtcars,mtcars$gear==4)
+#7
