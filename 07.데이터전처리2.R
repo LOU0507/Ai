@@ -313,3 +313,76 @@ agg.2011 <- aggregate(subway.tot[year.2011,c('on_tot','off-tot','income_date')],
                        by=list(역이름=subway.tot&stat_name[year.2011]),
                        FUN=sum)
 head(agg.2011)
+#문제 7번
+install.packages('mlbench')
+library(mlbench)
+data('Ionosphere')
+myds <- Ionosphere
+myds
+head(myds)
+aggregate(myds[.3:10],by=list(v1=myds$V1,class=myds$Class),FUN = sd)
+
+########################################
+## 병합 - merge ( 데이터셋1,데이터셋2,all=T (와부조인)또는 all.y=T (오른쪽 외부조인))
+########################################
+x <- data.frame(name=c('a','b','c'),math=c(90,80,40))
+x
+y <- data.frame(name=c('a','b','d'),korean=c(75,60,90))
+y
+z <- merge(x,y,bu=c('name'))
+z
+z1 <- merge(x,y,by=c('name'),all = T)
+z1
+z2 <- merge(x,y,by=c('name'),all = T)
+z2
+
+#문제 15번
+authors <- data.frame(
+  surname = c("Twein", "Venables", "Tierney", "Ripley", "McNeil"),
+  nationality = c("US", "Australia", "US", "UK", "Australia"),
+  retired = c("yes", rep("no", 4)))
+books <- data.frame(
+  name = c("Johns", "Venables", "Tierney", "Ripley", "Ripley", "McNeil"),
+  title = c("Exploratory Data Analysis",
+            "Modern Applied Statistics ...",
+            "LISP-STAT",
+            "Spatial Statistics", "Stochastic Simulation",
+            "Interactive Data Analysis"),
+  other.author = c(NA, "Ripley", NA, NA, NA, NA))
+#15-1
+authors
+books
+#15-2
+merge(authors,books,by.x=c('surname'),by.y=c('name'))
+#15-3
+merge(authors,books,by.x=c('surname'),by.y=c('name'),all.x=T)
+#15-4
+merge(authors,books,by.x=c('surname'),by.y=c('name'),all.y=T)
+#15-5
+merge(authors,books,by.x=c('surname'),by.y=c('name'),all=T)
+
+
+#문제 14번
+subway <- read.csv( 'D:/ai/study/r_study/subway.csv', header = TRUE, fileEncoding = "CP949", encoding = "UTF-8")
+subway.latlong <- read.csv('D:/ai/study/R_study/subway_latlong.csv', header = TRUE, fileEncoding = "CP949", encoding = "UTF-8")
+
+head(subway)
+head(subway.latlong)
+
+subway.tot <- merge(subway,subway.latlong,by.x=c('station'),by.y=c('STATION_CD'),)
+head(subway.tot)
+
+#14-2 
+agg <- aggregate(subway.tot[,c('on_tot','off_tot')],
+                 by=list(역이름=subway.tot$stat_name, 날짜=subway.tot$income_date),FUN=sum)
+head(agg)
+tail(agg)
+#15
+#15-1
+condi <- subway.tot$income_date>=20110101&subway.tot$income_date<=2011231
+aggregate(subway.tot[condi, c('on_tot','off_tot')],
+          by=list(역이름=subway.tot$stat_name[condi]),
+          FUN=sum)
+aggregate(subway.tot[condi, c('on_tot','off_tot')],
+          by=list(호선별=subway.tot$LINE_NUM[condi]),
+          FUN=sum)
